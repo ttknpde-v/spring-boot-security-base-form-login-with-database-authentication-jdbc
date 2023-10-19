@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css"  th:href="@{/css/bootstrap.min.css}">
+    <title>Home Page Third</title>
+</head>
+<body>
+<!--
+
+    *******
+        Learning working with entity
+        AND USE th:each="" for
+        Loop List Collection & Send Get method
+    *******
+
+-->
+<div class="container">
+    <p class="alert alert-secondary mt-1" style="font-family: SansSerif,sans-serif; font-size: 30px;" th:text="${title}"></p>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Nickname</th>
+            <th scope="col">Age</th>
+            <th scope="col">Gender</th>
+            <th scope="col">Salary</th>
+            <th scope="col">Options</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="data:${listCustomers}">
+            <td><span th:text="${data.getNickname()}"></span></td>
+            <td><span th:text="${data.getAge()}"></span></td>
+            <td><span th:text="${data.getGender()}"></span></td>
+            <td><span th:text="${data.getSalary()}"></span></td>
+            <td>
+                <a class="btn bg-danger" th:href="@{/three/delete/{nickname}(nickname = ${data.getNickname()})}">delete</a>
+                <a class="btn bg-warning" th:href="@{/three/update/{nickname}/{age}/{gender}/{salary}(nickname = ${data.getNickname()} , age = ${data.getAge()} , gender = ${data.getGender()} , salary = ${data.getSalary()})}">update</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div class="container">
+    <a class="btn btn-secondary mb-1" th:href="@{/three}">Get the form customer</a>
+</div>
+
+</body>
+</html>
+

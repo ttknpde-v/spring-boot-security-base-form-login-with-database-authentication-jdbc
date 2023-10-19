@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css"  th:href="@{/css/bootstrap.min.css}">
+    <title>Home Page Second</title>
+</head>
+<body>
+    <!--
+
+        *******
+            Learning working with method
+            AND
+            Post method
+        *******
+
+    -->
+    <div class="container">
+
+        <p class="alert alert-secondary mt-1" style="font-family: SansSerif,sans-serif; font-size: 30px;" th:text="${title}"></p>
+
+
+        <p><strong class="alert alert-success pt-1 pb-1">Factorial method</strong></p>
+        <form class="form-control w-25"  th:action="@{/get-factorial}" method="post">
+            <label class="form-label" for="n">Find a factorial number</label>
+            <input class="form-control" type="number" name="n" id="n" min="0">
+            <button class="btn btn-success mt-2" type="submit">click</button>
+            <p>result is <strong th:text="${resultFactorial?.intValue()}"></strong></p>
+        </form>
+
+        <br>
+
+        <p><strong class="alert alert-dark pt-1 pb-1">Student Entity (Map by th:object) need to create empty object student in url /two</strong></p>
+        <form class="form-control w-25" th:action="@{/map-student}" th:object="${student}" method="post">
+            <!-- The th:object attribute is used to bind the fields of the form to a model object.
+            The th:object attribute is used to bind the fields of the form to a model object. -->
+            <label class="form-label" for="nickname">Nickname</label>
+            <input class="form-control" type="text" name="nickname" id="nickname" > <!-- can also use th:field="<name attribute>"-->
+            <label class="form-label" for="age">Age</label>
+            <input class="form-control" type="number" name="age" id="age" >
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="gender" id="female" value="female">
+                <label class="form-check-label" for="female">
+                    Female
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="gender" id="male" value="male" checked>
+                <label class="form-check-label" for="male">
+                    Male
+                </label>
+            </div>
+            <button class="btn btn-dark mt-2" type="submit">click</button>
+            <p>result :
+                <strong th:text="${student?.getNickname()}"></strong>
+                <strong th:text="${student?.getAge()}"></strong>
+                <strong th:text="${student?.getGender()}"></strong>
+            </p>
+        </form>
+
+        <br>
+
+        <p><strong class="alert alert-warning pt-1 pb-1">Car Entity</strong></p>
+        <form class="form-control w-25" th:action="@{/map-car}" method="post">
+            <label class="form-label" for="brand">Brand</label>
+            <input class="form-control" type="text" name="brand" id="brand" >
+            <label class="form-label" for="model">Model</label>
+            <input class="form-control" type="text" name="model" id="model" >
+            <label class="form-label" for="price">Price</label>
+            <input class="form-control" type="number" name="price" id="price" step="any" min="0">
+            <button class="btn btn-warning mt-2" type="submit">click</button>
+            <p>result :
+                <strong th:text="${car?.getBrand()}"></strong>
+                <strong th:text="${car?.getModel()}"></strong>
+                <strong th:text="${car?.getPrice()}"></strong>
+            </p>
+        </form>
+
+        <br>
+
+    </div>
+    <div class="container">
+        <a class="btn btn-secondary mb-1" th:href="@{/two}">Reload the page</a>
+    </div>
+
+
+</body>
+</html>

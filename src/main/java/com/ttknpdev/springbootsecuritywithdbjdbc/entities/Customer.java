@@ -1,0 +1,15 @@
+package com.ttknpdev.springbootsecuritywithdbjdbc.entities;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class Customer {
+    private String nickname;
+    private Short age;
+    private String gender;
+    private Float salary;
+}

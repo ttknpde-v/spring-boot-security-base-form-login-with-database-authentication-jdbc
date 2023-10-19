@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css"  th:href="@{/css/bootstrap.min.css}">
+    <title>Home Page</title>
+</head>
+<body>
+    <!--
+
+        *******
+            Learning these ways we use for getting Any Attribute/Method
+            AND USE
+            The Safe Navigation operator (?) is used to avoid an unexpected NullPointerExceptions.
+        *******
+
+    -->
+    <div class="container">
+        <p class="alert alert-success mt-1" style="font-family: SansSerif,sans-serif; font-size: 30px;">
+            Welcome to Home Page
+            Learning about Access any Attribute/Method Java
+        </p>
+        <div>
+            <!--
+                 # First way
+                 thymeleaf th:text Attribute with Variable Expressions
+            -->
+            <ul class="list-group">
+                <li class="list-group-item">result ${data1} : <strong th:text="${data1}"></strong></li> <!-- result : ServiceData.Student(firstname=peter, lastname=parker, age=21)-->
+                <li class="list-group-item">result {data1.getFirstname()} : <strong th:text="${data1?.getFirstname()}"></strong></li>
+                <li class="list-group-item">result {data1.getLastname()} : <strong th:text="${data1?.getLastname()}"></strong></li>
+                <li class="list-group-item">result {data1.getAge()} : <strong th:text="${data1?.getAge()}"></strong></li>
+            </ul>
+
+            <br>
+            <p class="alert alert-danger"> Name : <strong th:text="*{data2?.firstname}"></strong></p>
+            <p class="alert alert-danger"> Email : <strong th:text="*{data2?.lastname}"></strong></p>
+            <p class="alert alert-danger"> Gender : <strong th:text="*{data2?.age}"></strong></p>
+
+            <br>
+            <!--
+                # Second way
+                thymeleaf th:text Attribute with Selection Expressions
+            -->
+            <p class="alert alert-secondary"> Name : <strong th:text="*{dataHasArgument?.firstname}"></strong></p>
+            <p class="alert alert-secondary"> Email : <strong th:text="*{dataHasArgument?.lastname}"></strong></p>
+            <p class="alert alert-secondary"> Gender : <strong th:text="*{dataHasArgument?.age}"></strong></p>
+        </div>
+
+
+    </div>
+
+</body>
+</html>

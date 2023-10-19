@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css"  th:href="@{/css/bootstrap.min.css}">
+    <title>Home Page Fourth</title>
+</head>
+<style>
+    .table>:not(caption)>*>* {
+        padding: .5rem 4.5rem;
+        background-color: var(--bs-table-bg);
+        border-bottom-width: 1px;
+        box-shadow: inset 0 0 0 9999px var(--bs-table-accent-bg);
+    }
+</style>
+<body>
+<div class="container">
+    <p class="alert alert-secondary mt-1" style="font-family: SansSerif,sans-serif; font-size: 30px;"><strong th:text="${title}"></strong></p>
+    <!--
+    -->
+    <table
+           class = "table table-striped table-responsive-md">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Gender</th>
+                <th >Options</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="student:${list}">
+                <td th:text="${student.nickname}"></td>
+                <td th:text="${student.age}"></td>
+                <td th:text="${student.gender}"></td>
+                <td >
+                    <a class="btn btn-primary">Update</a>
+                    <a class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>
